@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  zeppelin:
+    network_mode: host
+    image: apache/zeppelin:0.8.2
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - ./data/zeppelin/logs:/logs
+      - ./data/zeppelin/notebook:/notebook
+      - ./data/zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
+    environment:
+      ZEPPELIN_NOTEBOOK_DIR: /notebook
+      ZEPPELIN_LOG_DIR: /logs
